@@ -36,7 +36,6 @@ class AuthorsController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
-        //
     }
 
     /**
@@ -47,7 +46,7 @@ class AuthorsController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        return $author;
     }
 
     /**
