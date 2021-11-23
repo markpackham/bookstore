@@ -16,7 +16,7 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        return AuthorsResource::collection(Author::all());
     }
 
     /**
@@ -26,7 +26,6 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**

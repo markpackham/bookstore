@@ -30,7 +30,11 @@ Route::middleware('auth:api')->prefix('v1')->group(function () {
         return $request->user();
     });
 
-    Route::get('/authors/{author}', [AuthorsController::class, 'show']);
+    // http://127.0.0.1:8000/api/v1/authors (make sure user is authenticated so use Insomnia)
+    // Route::get('/authors', [AuthorsController::class, 'index']);
+    // Route::get('/authors/{author}', [AuthorsController::class, 'show']);
+
+    Route::apiResource('/authors', AuthorsController::class);
 });
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
