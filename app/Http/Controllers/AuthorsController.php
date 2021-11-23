@@ -36,6 +36,11 @@ class AuthorsController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
+        $author = Author::create([
+            'name' => 'John Smith'
+        ]);
+
+        return new AuthorsResource($author);
     }
 
     /**
