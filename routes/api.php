@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// to access an API the url has to have /api added
+// http://127.0.0.1:8000/api/test
+// Route::get('/test', function (Request $request) {
+//     return "Authenticated";
+// });
+
+Route::middleware('auth:api')->prefix('v1')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
 });
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+// Created user login and password
+// billy@email.com
+// billy1234
