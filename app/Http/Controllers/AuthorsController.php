@@ -36,8 +36,9 @@ class AuthorsController extends Controller
      */
     public function store(StoreAuthorRequest $request)
     {
+        $faker = \Faker\Factory::create(1);
         $author = Author::create([
-            'name' => 'John Smith'
+            'name' => $faker->name
         ]);
 
         return new AuthorsResource($author);
