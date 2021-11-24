@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2021 at 03:50 PM
+-- Generation Time: Nov 24, 2021 at 05:23 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -65,7 +65,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `name`, `description`, `publication_year`, `created_at`, `updated_at`) VALUES
-(1, 'Hilda Ledner', 'Libero nihil ut iste sint aut tempore iste. Suscipit nostrum maxime molestias nemo cum et. In occaecati sit aliquid porro animi. Impedit molestiae reiciendis cumque.', '1985', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
+(1, 'Gold', 'Going For', '1920', '2021-11-24 14:07:33', '2021-11-24 15:27:28'),
 (2, 'Roel Lehner', 'Cumque id aut accusamus minus id sint. Illum nulla laborum officia ex eaque harum voluptatem quia. Consequatur excepturi qui adipisci.', '2016', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
 (3, 'Brando Renner', 'Eligendi quam magnam earum assumenda qui modi recusandae ut. Id necessitatibus eos distinctio et hic vitae.', '2017', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
 (4, 'Colin Schultz V', 'Officia non ut reiciendis sunt accusantium. Quo rerum non saepe non eveniet illum. Illo laboriosam voluptatem voluptatem maiores nulla sit. Ratione natus qui voluptatem quae et voluptate.', '1975', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
@@ -81,6 +81,17 @@ CREATE TABLE `book_author` (
   `author_id` bigint(20) UNSIGNED NOT NULL,
   `book_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `book_author`
+--
+
+INSERT INTO `book_author` (`author_id`, `book_id`) VALUES
+(1, 1),
+(4, 2),
+(5, 3),
+(2, 4),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -395,7 +406,7 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
