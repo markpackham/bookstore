@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2021 at 06:22 PM
+-- Generation Time: Nov 24, 2021 at 03:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,67 @@ SET time_zone = "+00:00";
 --
 -- Database: `bookstore`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `authors`
+--
+
+CREATE TABLE `authors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `authors`
+--
+
+INSERT INTO `authors` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Deborah Bernhard', '2021-11-24 14:49:45', '2021-11-24 14:49:45'),
+(2, 'Mr. Ward Langworth', '2021-11-24 14:49:45', '2021-11-24 14:49:45'),
+(3, 'Verda Weber MD', '2021-11-24 14:49:45', '2021-11-24 14:49:45'),
+(4, 'Dr. Bianka Purdy III', '2021-11-24 14:49:45', '2021-11-24 14:49:45'),
+(5, 'Dr. Ned Schuster', '2021-11-24 14:49:45', '2021-11-24 14:49:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `books`
+--
+
+CREATE TABLE `books` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `publication_year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `name`, `description`, `publication_year`, `created_at`, `updated_at`) VALUES
+(1, 'Hilda Ledner', 'Libero nihil ut iste sint aut tempore iste. Suscipit nostrum maxime molestias nemo cum et. In occaecati sit aliquid porro animi. Impedit molestiae reiciendis cumque.', '1985', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
+(2, 'Roel Lehner', 'Cumque id aut accusamus minus id sint. Illum nulla laborum officia ex eaque harum voluptatem quia. Consequatur excepturi qui adipisci.', '2016', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
+(3, 'Brando Renner', 'Eligendi quam magnam earum assumenda qui modi recusandae ut. Id necessitatibus eos distinctio et hic vitae.', '2017', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
+(4, 'Colin Schultz V', 'Officia non ut reiciendis sunt accusantium. Quo rerum non saepe non eveniet illum. Illo laboriosam voluptatem voluptatem maiores nulla sit. Ratione natus qui voluptatem quae et voluptate.', '1975', '2021-11-24 14:07:33', '2021-11-24 14:07:33'),
+(5, 'Lee Rau', 'Architecto velit sit quisquam nihil dolores maxime est. Aut omnis dolorem expedita sit est cum. Voluptates facere nobis saepe et ex. Rem atque eum natus sed ex commodi.', '2008', '2021-11-24 14:07:33', '2021-11-24 14:07:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_author`
+--
+
+CREATE TABLE `book_author` (
+  `author_id` bigint(20) UNSIGNED NOT NULL,
+  `book_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -54,15 +115,18 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
-(4, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
-(5, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
-(6, '2016_06_01_000004_create_oauth_clients_table', 1),
-(7, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
-(8, '2019_08_19_000000_create_failed_jobs_table', 1),
-(9, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(45, '2014_10_12_000000_create_users_table', 1),
+(46, '2014_10_12_100000_create_password_resets_table', 1),
+(47, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(48, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(49, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(50, '2016_06_01_000004_create_oauth_clients_table', 1),
+(51, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(52, '2019_08_19_000000_create_failed_jobs_table', 1),
+(53, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(54, '2021_11_23_175032_create_authors_table', 1),
+(55, '2021_11_24_132647_create_books_table', 1),
+(56, '2021_11_24_133137_create_book_author_table', 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +151,7 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
-('fd398a1bd093ff81b12a5174ac3a4c197add1a5a249877fa16d7234208be72b422595840db7c9999', 1, 6, NULL, '[]', 0, '2021-11-23 17:20:49', '2021-11-23 17:20:49', '2022-11-23 17:20:49');
+('32cb4f81f9ea238e3fbd9697ff229b2ed3ddad328445ddc5468b1291840e41426b612517b422ce9b', 1, 2, NULL, '[]', 0, '2021-11-24 14:47:40', '2021-11-24 14:47:40', '2022-11-24 14:47:40');
 
 -- --------------------------------------------------------
 
@@ -129,12 +193,8 @@ CREATE TABLE `oauth_clients` (
 --
 
 INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Laravel Personal Access Client', 'FuBAoZZ6QQvFoRGsDGCD7lMV9FOhVYyqBLIHnVoh', NULL, 'http://localhost', 1, 0, 0, '2021-11-23 13:18:33', '2021-11-23 13:18:33'),
-(2, NULL, 'Laravel Password Grant Client', 'iJM5D57jsjISIfv4cqQAwRyVZyIyVnf0YvEswDlC', 'users', 'http://localhost', 0, 1, 0, '2021-11-23 13:18:33', '2021-11-23 13:18:33'),
-(3, NULL, 'Laravel Personal Access Client', 'JHsLjdoKin4JarUCcVstMXRO1QYcIHjKcKdJsbZR', NULL, 'http://localhost', 1, 0, 0, '2021-11-23 13:26:30', '2021-11-23 13:26:30'),
-(4, NULL, 'Laravel Password Grant Client', 'O3rzJRlryPUK58lwDUDD67reJnn6vSuLYYmu54TF', 'users', 'http://localhost', 0, 1, 0, '2021-11-23 13:26:30', '2021-11-23 13:26:30'),
-(5, NULL, 'Laravel Personal Access Client', 'b8CkUcC2dnE9DRoHy0uQvcqqVCtiaB0Ge6iqNDkz', NULL, 'http://localhost', 1, 0, 0, '2021-11-23 17:19:23', '2021-11-23 17:19:23'),
-(6, NULL, 'Laravel Password Grant Client', 'WVpxEJIbqEKUxaXXaXSKurN4oToA1955HYCtgf7T', 'users', 'http://localhost', 0, 1, 0, '2021-11-23 17:19:23', '2021-11-23 17:19:23');
+(1, NULL, 'Laravel Personal Access Client', 'jwHRJJGiwAgTVdJGPqyg1Z88f2hNFOFo8PKx56d9', NULL, 'http://localhost', 1, 0, 0, '2021-11-24 14:41:36', '2021-11-24 14:41:36'),
+(2, NULL, 'Laravel Password Grant Client', 'FnPjH42DFhbjHWzgt08CqMfzfhixIqHTuGruAKi9', 'users', 'http://localhost', 0, 1, 0, '2021-11-24 14:41:36', '2021-11-24 14:41:36');
 
 -- --------------------------------------------------------
 
@@ -154,9 +214,7 @@ CREATE TABLE `oauth_personal_access_clients` (
 --
 
 INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2021-11-23 13:18:33', '2021-11-23 13:18:33'),
-(2, 3, '2021-11-23 13:26:30', '2021-11-23 13:26:30'),
-(3, 5, '2021-11-23 17:19:23', '2021-11-23 17:19:23');
+(1, 1, '2021-11-24 14:41:36', '2021-11-24 14:41:36');
 
 -- --------------------------------------------------------
 
@@ -176,7 +234,7 @@ CREATE TABLE `oauth_refresh_tokens` (
 --
 
 INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires_at`) VALUES
-('1c3221ce2a0d1b05e3fb8605bb9ae0d89c54dbf11beedcca948feb6a4f0d5adc15f2c8a3ac0d9ca1', 'fd398a1bd093ff81b12a5174ac3a4c197add1a5a249877fa16d7234208be72b422595840db7c9999', 0, '2022-11-23 17:20:49');
+('8846451fa20fddaf75d700b2f63c6cb8c13af3d824434a22d0830a661641db9f0022ab8cb6245d72', '32cb4f81f9ea238e3fbd9697ff229b2ed3ddad328445ddc5468b1291840e41426b612517b422ce9b', 0, '2022-11-24 14:47:40');
 
 -- --------------------------------------------------------
 
@@ -230,11 +288,30 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Code With Billy', 'billy@email.com', NULL, '$2y$10$EDMz5yS7e9/JydHjml0jze2Ha3W8pBEihoiugIqBNBlNj7.s8Gkm.', NULL, NULL, NULL);
+(1, 'billy', 'billy@email.com', NULL, '$2y$10$q3VstEYcQ.4kS6mtnN.VdeDVYfD0Tm7CPxBpjPe2hRYpm7O4ihFDu', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `authors`
+--
+ALTER TABLE `authors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `book_author`
+--
+ALTER TABLE `book_author`
+  ADD KEY `book_author_author_id_foreign` (`author_id`),
+  ADD KEY `book_author_book_id_foreign` (`book_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -309,6 +386,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `authors`
+--
+ALTER TABLE `authors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `books`
+--
+ALTER TABLE `books`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -318,19 +407,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -343,6 +432,17 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `book_author`
+--
+ALTER TABLE `book_author`
+  ADD CONSTRAINT `book_author_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`),
+  ADD CONSTRAINT `book_author_book_id_foreign` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
