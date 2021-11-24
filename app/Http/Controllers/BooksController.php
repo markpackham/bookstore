@@ -40,8 +40,8 @@ class BooksController extends Controller
         $faker = \Faker\Factory::create(1);
         $book = Book::create([
             'name' => $faker->name,
-            'description' => $faker->name,
-            'name' => $faker->name,
+            'description' => $faker->text,
+            'publication_year' => $faker->year,
         ]);
 
         return new BooksResource($book);
