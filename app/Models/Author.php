@@ -16,4 +16,16 @@ class Author extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function book()
+    {
+        return $this->hasManyThrough(
+            '\App\Models\Book',
+            '\App\Models\BookAuthor',
+            'book_id',
+            'id',
+            'id',
+            'author_id',
+        );
+    }
 }
